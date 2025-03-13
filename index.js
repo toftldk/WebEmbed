@@ -113,7 +113,7 @@ app.get('/embed', (req, res) => {
 		document.head.appendChild(metaElement);
 	}
 	if (image) {
-	    const metaImage = document.createElement('meta'); // 🔹 변수명을 `metaImage`로 변경
+	    const metaImage = document.createElement('meta');
 	    metaImage.setAttribute('property', 'og:image');
 	    metaImage.setAttribute('content', image);
 	    document.head.appendChild(metaImage);
@@ -121,9 +121,9 @@ app.get('/embed', (req, res) => {
 	
 	const embedColor = color 
 	    ? (color.startsWith("#") ? color : `#${color}`)
-	    : '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+	    : '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'); // 색상이 없으면 랜덤 생성, 항상 6자리
 	
-	const metaColor = document.createElement('meta'); // 🔹 변수명을 `metaColor`로 변경
+	const metaColor = document.createElement('meta');
 	metaColor.setAttribute('name', 'theme-color');
 	metaColor.setAttribute('content', embedColor);
 	document.head.appendChild(metaColor);
