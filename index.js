@@ -119,7 +119,9 @@ app.get('/embed', (req, res) => {
 	    document.head.appendChild(metaImage);
 	}
 	
-	const embedColor = color || '#' + Math.floor(Math.random() * 16777215).toString(16); // 색상이 없으면 랜덤 생성
+	const embedColor = color 
+	    ? (color.startsWith("#") ? color : `#${color}`)
+	    : '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 	
 	const metaColor = document.createElement('meta'); // 🔹 변수명을 `metaColor`로 변경
 	metaColor.setAttribute('name', 'theme-color');
