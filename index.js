@@ -118,18 +118,13 @@ app.get('/embed', (req, res) => {
 		metaElement.setAttribute('content', image);
 		document.head.appendChild(metaElement);
 	}
-	if (!color) {
-	    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-	    const metaElement = document.createElement('meta');
-	    metaElement.setAttribute('name', 'theme-color');
-	    metaElement.setAttribute('content', randomColor);
-	    document.head.appendChild(metaElement);
-	} else {
-	    const metaElement = document.createElement('meta');
-	    metaElement.setAttribute('name', 'theme-color');
-	    metaElement.setAttribute('content', color);
-	    document.head.appendChild(metaElement);
-	}
+	const embedColor = color || '#' + Math.floor(Math.random() * 16777215).toString(16); // 색상이 없으면 랜덤 생성
+	
+	const metaElement = document.createElement('meta');
+	metaElement.setAttribute('name', 'theme-color');
+	metaElement.setAttribute('content', embedColor);
+	document.head.appendChild(metaElement);
+
 	if (description) {
 		const metaElement = document.createElement('meta');
 		metaElement.setAttribute('property', 'og:description');
