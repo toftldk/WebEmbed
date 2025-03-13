@@ -113,23 +113,24 @@ app.get('/embed', (req, res) => {
 		document.head.appendChild(metaElement);
 	}
 	if (image) {
-		const metaElement = document.createElement('meta');
-		metaElement.setAttribute('property', 'og:image');
-		metaElement.setAttribute('content', image);
-		document.head.appendChild(metaElement);
+	    const metaImage = document.createElement('meta'); // 🔹 변수명을 `metaImage`로 변경
+	    metaImage.setAttribute('property', 'og:image');
+	    metaImage.setAttribute('content', image);
+	    document.head.appendChild(metaImage);
 	}
+	
 	const embedColor = color || '#' + Math.floor(Math.random() * 16777215).toString(16); // 색상이 없으면 랜덤 생성
 	
-	const metaElement = document.createElement('meta');
-	metaElement.setAttribute('name', 'theme-color');
-	metaElement.setAttribute('content', embedColor);
-	document.head.appendChild(metaElement);
-
+	const metaColor = document.createElement('meta'); // 🔹 변수명을 `metaColor`로 변경
+	metaColor.setAttribute('name', 'theme-color');
+	metaColor.setAttribute('content', embedColor);
+	document.head.appendChild(metaColor);
+	
 	if (description) {
-		const metaElement = document.createElement('meta');
-		metaElement.setAttribute('property', 'og:description');
-		metaElement.setAttribute('content', description);
-		document.head.appendChild(metaElement);
+	    const metaDescription = document.createElement('meta'); // 🔹 변수명을 `metaDescription`으로 변경
+	    metaDescription.setAttribute('property', 'og:description');
+	    metaDescription.setAttribute('content', description);
+	    document.head.appendChild(metaDescription);
 	}
 	if (provider_name && !provider_url) {
 		const metaElement = document.createElement('meta');
